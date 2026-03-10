@@ -1,0 +1,37 @@
+openapi: 3.0.0
+info:
+  title: WhatsApp-Throtler API
+  version: 1.0.0
+  description: API to queue and throttle WhatsApp messages via a Go Bridge.
+paths:
+  /add_message:
+    post:
+      summary: Add a message to the sending queue
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - receiver
+                - message
+              properties:
+                receiver:
+                  type: string
+                  example: "628123456789"
+                message:
+                  type: string
+                  example: "Hello from the queue!"
+      responses:
+        200:
+          description: Message added successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  queueLength:
+                    type: integer
