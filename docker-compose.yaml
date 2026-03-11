@@ -4,7 +4,7 @@ services:
   wa-throtle:
     build: .
     image: wa-throtle:latest
-    container_name: wa-throtler
+    container_name: wa-throtle
     restart: always
     ports:
       - "7000:7000"
