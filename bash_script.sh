@@ -10,11 +10,11 @@ nvm use 18
 
 export PATH=/home/rijal/.nvm/versions/node/v18.18.2/bin/node:$PATH
 
-PROJECT_DIR="/DATA/AppData/browser-script"
-CONTAINER_NAME="browser-script"
-BRANCH="on-top-of-nodejs"
+PROJECT_DIR="/DATA/AppData/wa-wraper"
+CONTAINER_NAME="wa-throtle"
+BRANCH="main"
 
-cd "$PROJECT_DIR"
+cd "$PROJECT_DIR"c
 
 echo "[$(date)] Starting deployment..."
 
