@@ -14,7 +14,7 @@ PROJECT_DIR="/DATA/AppData/wa-wraper"
 CONTAINER_NAME="wa-throtle"
 BRANCH="main"
 
-cd "$PROJECT_DIR"c
+cd "$PROJECT_DIR"
 
 echo "[$(date)] Starting deployment..."
 
