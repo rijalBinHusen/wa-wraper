@@ -1,19 +1,16 @@
 version: '3.8'
 
 services:
-  whatsapp-throtler:
+  wa-throtle:
     build: .
-    container_name: whatsapp-throtler
-    ports:
-      - "3000:3000"
-    environment:
-      - WHATSAPP_GO_URL=http://whatsapp-bridge:8080
-      - SEND_INTERVAL_MS=5000
-      - PORT=3000
-    depends_on:
-      - whatsapp-bridge
+    image: wa-throtle:latest
+    container_name: wa-throtler
     restart: always
-
-networks:
-  default:
-    name: whatsapp-net
+    ports:
+      - "7000:7000"
+    environment:
+      - NODE_ENV=production
+      # Use your CasaOS/Server IP here so it can find the other container
+      - WHATSAPP_GO_URL=http://192.168.1.xxx:8080 
+      - SEND_INTERVAL_MS=9000
+      - PORT=7000
