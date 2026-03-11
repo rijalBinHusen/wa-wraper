@@ -73,7 +73,12 @@ app.post('/add_message', (req: Request, res: Response) => {
 });
 
 // --- API Docs ---
-const swaggerDocument = YAML.load(path.join(__dirname, './swagger.yaml'));
+// Use path.join to ensure it finds the yaml regardless of where the script runs
+const swaggerPath = process.env.NODE_ENV === 'production' 
+    ? path.join(__dirname, './swagger.yaml') 
+    : path.join(__dirname, 'swagger.yaml');
+
+const swaggerDocument = YAML.load(swaggerPath);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.listen(PORT, () => {

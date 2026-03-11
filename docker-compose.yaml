@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  whatsapp-throtler:
+    build: .
+    container_name: whatsapp-throtler
+    ports:
+      - "3000:3000"
+    environment:
+      - WHATSAPP_GO_URL=http://whatsapp-bridge:8080
+      - SEND_INTERVAL_MS=5000
+      - PORT=3000
+    depends_on:
+      - whatsapp-bridge
+    restart: always
+
+networks:
+  default:
+    name: whatsapp-net
