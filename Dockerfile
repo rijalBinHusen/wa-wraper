@@ -7,6 +7,7 @@ RUN npm install --omit=dev
 
 # 2. Copy the already compiled JS from your local 'dist' folder
 COPY dist ./dist
+COPY node_modules ./node_modules
 
 # 3. Copy the Swagger YAML (needed for the API docs)
 COPY src/swagger.yaml ./dist/swagger.yaml
