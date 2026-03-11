@@ -4,8 +4,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const GO_API_BASE = process.env.WHATSAPP_GO_URL;
-const GOWA_USERNAME = process.env.GOWA_USERNAME || "";
-const GOWA_PASSWORD = process.env.GOWA_PASSWORD || "";
+const GOWA_AUTH = Buffer.from(process.env.WHATSAPP_GO_AUTH || "").toString('base64');
 
 export interface MessagePayload {
     receiver: string;
@@ -21,11 +20,8 @@ export const sendToGoBridge = async (payload: MessagePayload) => {
             message: payload.message,
         }, {
             headers: {
+                'Authorization': `Basic ${GOWA_AUTH}`,
                 'Content-Type': 'application/json'
-            },
-            auth: {
-                username: GOWA_USERNAME,
-                password: GOWA_PASSWORD,
             }
         });
         return response.data;
